@@ -23,5 +23,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-echo $twig->render('signUp.twig');
+echo $twig->render('signup.twig');
 ?>
