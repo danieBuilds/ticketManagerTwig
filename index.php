@@ -40,7 +40,7 @@ switch ($path) {
         break;
     
     case '/signup':
-        include 'controllers/signup.php';
+        include 'controllers/signUp.php';
         break;
     
     case '/dashboard':
