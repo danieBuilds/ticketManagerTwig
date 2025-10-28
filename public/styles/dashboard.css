@@ -1,0 +1,236 @@
+body{
+    margin: 0;
+    background-color: rgb(0, 200, 255);
+}
+nav{
+    background-color: transparent;
+    margin: 1rem;
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    h1{
+        font-size: large;
+        color: brown;
+    }
+}
+.nav-contents{
+    display: flex;
+    gap: 1rem;
+
+    button{
+        color: #fff;
+        background-color: rgb(231, 162, 72);
+        border-style: none;
+        padding: 0.2rem 1rem;
+        border-radius: 1rem;
+    }
+}
+#dashboard-main{
+    display: flex;
+    font: 1em sans-serif;
+    flex-direction: column;
+    justify-self: center;
+    width: 80vw;
+}
+.stats{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+}
+.stat-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+    width: 20%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    h2{
+        font-size: small;
+        color: brown;
+    }
+    p{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    }
+.ticket-manager{
+    margin-top: 2rem;
+    background-color: transparent;
+    border-radius: 1rem;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1{
+            color: brown;
+        }
+
+        button{
+            color: #fff;
+            background-color: rgb(231, 162, 72);
+            border-style: none;
+            padding: 0.2rem 1rem;
+            border-radius: 1rem;
+        }
+    }
+}
+.addTicket{
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.addTicket form{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    label{
+        font-weight: bold;
+    }
+    label{
+        font-weight: bold;
+        padding-right: 0.5rem;
+    }
+    input, textarea, select{
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+    }
+
+    button{
+        width: calc(1rem + 20vw);
+        color: #fff;
+        background-color: rgb(231, 162, 72);
+        border-style: none;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+}
+.ticket-cards{
+    background-color: #f9f7f7;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.ticket-card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    h3{
+        margin: 0;
+        color: brown;
+    }
+    p{
+        margin: 0.5rem 0 0 0;
+    }
+    .status{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        color: rgb(162, 96, 9);
+    }
+    .inprogress{
+        margin-top: 0.5rem;
+        font-weight: bold;
+        
+        span{
+        color: orange;
+        }
+    }
+    .open{
+        margin-top: 0.5rem;
+        font-weight: bold;
+    
+        span{
+            color: green;
+        }
+
+    }
+    .closed{
+        margin-top: 0.5rem;
+        font-weight: bold;
+        
+        span{
+            color: red;
+        }
+    }
+}
+.sortTickets {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.sortTickets button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.sortTickets button:hover {
+    background: #4a90e2;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.sortTickets button.active {
+    background: #4a90e2;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .sortTickets {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .sortTickets button {
+        flex: 1;
+        min-width: 120px;
+    }
+}

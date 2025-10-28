@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - tickHandler</title>
+    <link rel="stylesheet" href="./public/styles/signUp.css">
+</head>
+<body>
+    <section id="signup">
+        <form method="POST" action="/signup">
+            <h1>Create your account</h1>
+            <label for="username">Username</label>
+            <input 
+                type="text" 
+                name="username" 
+                id="username" 
+                required 
+            />
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                required 
+            />
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                required 
+            />
+            <input type="submit" value="Sign Up" />
+        </form>
+    </section>
+
+    <div id="toast-container"></div>
+
+    <script src="./public/js/toast.js"></script>
+</body>
+</html>

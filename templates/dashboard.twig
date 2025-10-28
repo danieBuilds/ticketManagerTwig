@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - tickHandler</title>
+    <link rel="stylesheet" href="./public/styles/dashboard.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <h1>tickHandler Dashboard</h1>
+        </div>
+        <div class="nav-contents">
+            <button onclick="toggleView()" type="button" id="toggle-btn">tickets</button>
+            <button onclick="window.location.href='/logout'" type="button">Logout</button>
+        </div>
+    </nav>
+
+    <section id="dashboard-main">
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="dashboard-container">
+            <h1>Welcome to your Dashboard</h1>
+            <p>Manage your tickets efficiently and stay organized.</p>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h2>Total Tickets</h2>
+                    <p>{{ total_tickets }}</p>
+                </div>
+                <div class="stat-card">
+                    <h2>Open Tickets</h2>
+                    <p>{{ open_tickets }}</p>
+                </div>
+                <div class="stat-card">
+                    <h2>In Progress Tickets</h2>
+                    <p>{{ in_progress_tickets }}</p>
+                </div>
+                <div class="stat-card">
+                    <h2>Closed Tickets</h2>
+                    <p>{{ closed_tickets }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Ticket Form -->
+        <div id="add-ticket-view" class="addTicket" style="display: none;">
+            <header>
+                <h1>Add New Ticket</h1>
+            </header>
+            <form method="POST" action="/dashboard">
+                <input type="hidden" name="action" value="add_ticket">
+                <input
+                    type="text"
+                    name="ticket_name"
+                    placeholder="Ticket Title"
+                    required
+                />
+                <textarea
+                    name="ticket_desc"
+                    placeholder="Ticket Description"
+                    required
+                ></textarea>
+                <div class="addTicket-status">
+                    <label>Status:</label>
+                    <select name="ticket_status">
+                        <option value="open">Open</option>
+                        <option value="in progress">In Progress</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+                <button type="submit">Add Ticket</button>
+            </form>
+        </div>
+
+        <!-- Tickets View -->
+        <div id="tickets-view" class="ticket-manager" style="display: none;">
+            <header>
+                <h1>Tickets</h1>
+                <button onclick="showAddTicket()" type="button">
+                    + Add Ticket
+                </button>
+            </header>
+
+            <div class="sortTickets">
+                <button class="active" onclick="filterTickets('all')">all</button>
+                <button onclick="filterTickets('open')">open</button>
+                <button onclick="filterTickets('in progress')">in progress</button>
+                <button onclick="filterTickets('closed')">closed</button>
+            </div>
+
+            {% if tickets|length > 0 %}
+                <div class="ticket-cards" id="ticket-cards">
+                    {% for ticket in tickets %}
+                        <div class="ticket-card" data-status="{{ ticket.status }}">
+                            <header>
+                                <h2>{{ ticket.name }}</h2>
+                                <p class="ticket-desc" style="display: none;">{{ ticket.desc }}</p>
+                                <div class="dropdown">
+                                    <button class="dropbtn" type="button">⋮</button>
+                                    <div class="dropdown-content">
+                                        <a href="#" onclick="showFullDetails(this); return false;">Show Details</a>
+                                        <a href="#" onclick="deleteTicket('{{ ticket.id }}'); return false;">Delete</a>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="status {% if ticket.status == 'open' %}open{% elseif ticket.status == 'in progress' %}inprogress{% else %}closed{% endif %}">
+                                <p>Status:</p>
+                                <span>{{ ticket.status }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No tickets yet. Create your first ticket!</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <div id="toast-container"></div>
+
+    <form id="delete-form" method="POST" action="/dashboard" style="display: none;">
+        <input type="hidden" name="action" value="delete_ticket">
+        <input type="hidden" name="ticket_id" id="delete-ticket-id">
+    </form>
+
+    <script src="./public/js/toast.js"></script>
+    <script src="./public/js/dashboard.js"></script>
+</body>
+</html>

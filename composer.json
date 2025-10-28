@@ -1,0 +1,17 @@
+{
+    "name": "daniebuilds/task-manager-twig",
+    "autoload": {
+        "psr-4": {
+            "Twig\\Twig\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "danieBuilds",
+            "email": "daniemodu@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}
